@@ -1,0 +1,35 @@
+{
+	"name": "conditionalsplit",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "musiccsv",
+						"type": "DatasetReference"
+					},
+					"name": "music"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "simpleoutput",
+						"type": "DatasetReference"
+					},
+					"name": "MuscC"
+				}
+			],
+			"transformations": [
+				{
+					"name": "datestamp"
+				},
+				{
+					"name": "ConditionalSplit1"
+				}
+			],
+			"script": "source(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false) ~> music\nmusic derive(Datestamp = currentDate()) ~> datestamp\ndatestamp split(startsWith(Column_3,'C'),\n\tdisjoint: true) ~> ConditionalSplit1@(startwithT)\nConditionalSplit1@startwithT sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['myfile.csv'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> MuscC"
+		}
+	}
+}

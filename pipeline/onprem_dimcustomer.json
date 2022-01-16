@@ -1,0 +1,33 @@
+{
+	"name": "onprem_dimcustomer",
+	"properties": {
+		"activities": [
+			{
+				"name": "dimcustomer_metatdata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DimCusotmer",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"columnCount",
+						"structure"
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-01-01T19:05:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,6 @@
+{
+	"name": "sqlselfhosted",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
