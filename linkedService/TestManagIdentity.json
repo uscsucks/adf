@@ -1,0 +1,11 @@
+{
+	"name": "TestManagIdentity",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://dougstorage2.blob.core.windows.net",
+			"accountKind": "StorageV2"
+		}
+	}
+}
