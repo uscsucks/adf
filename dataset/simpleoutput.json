@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "Output",
+				"fileName": "music.txt",
+				"folderPath": "output",
 				"container": "sample"
 			},
 			"columnDelimiter": ",",
